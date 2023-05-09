@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <script>
+        function checkForm(formData) {
+            const username = formData.username.value;
+            const password = formData.password.value;
+            if (username && password) {
+                return true;
+            } else {
+                alert("请正确输入！");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="/servlet/impl" onsubmit="return checkForm(this)">
+    <label for="username">用户名：</label><input type="text" id="username" name="username">
+    <label for="password">密码：</label><input type="password" id="password" name="password">
+    <button type="submit">登录</button>
+</form>
+</body>
+</html>
