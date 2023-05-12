@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Fqq
  */
 @WebServlet("/servlet/extends")
-public class ExtendsHttpServlet extends HttpServlet {
+public class ExtendsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         this.doPost(req, resp);
