@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
  * @author Fqq
  */
 @WebServlet("/servlet/impl")
-public class ImplementServletWithAnnotationOfWebServlet implements Servlet {
+public class ImplServlet implements Servlet {
 
     @Override
     public void init(ServletConfig servletConfig) {

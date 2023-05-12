@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author Fqq
  */
 @WebFilter("/*")
-public class ImplementFilterWithAnnotationOfWebFilter implements Filter {
+public class ImplFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
         System.out.println("》》》》》 filter 初始化 》》》》》");
