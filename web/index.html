@@ -14,13 +14,31 @@
                 return false;
             }
         }
+
+        /**
+         * js 获取 cookie
+         */
+        function getCookie() {
+            fetch("/cookie").then(response => {
+                return response.text();
+            }).then(response => {
+                document.getElementById("cookieView").innerHTML = response + "\n"
+                    + "<h3>cookie: " + decodeURI(document.cookie) + "<h3/>";
+            });
+        }
     </script>
 </head>
 <body>
+
 <form action="/servlet/impl" onsubmit="return checkForm(this)">
     <label for="username">用户名：</label><input type="text" id="username" name="username">
     <label for="password">密码：</label><input type="password" id="password" name="password">
     <button type="submit">登录</button>
 </form>
+
+<div>&nbsp;</div>
+<button onclick="getCookie()">获取 cookie:</button>
+<div id="cookieView"></div>
+
 </body>
 </html>

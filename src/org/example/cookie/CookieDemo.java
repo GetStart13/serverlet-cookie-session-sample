@@ -15,16 +15,16 @@ import java.time.format.DateTimeFormatter;
 @WebServlet("/cookie")
 public class CookieDemo extends HttpServlet {
     private static final String UTF8 = "utf-8";
-    private static final String ACCESS_TIME = "access-time";
+    private static final String ACCESS_TIME = "Access-Time";
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
 
             // 设置响应消息的格式及编码
-            resp.setContentType("text/html;charset=utf-8");
+            response.setContentType("text/html;charset=utf-8");
             // 获取所有 cookie 数组
-            Cookie[] cookies = req.getCookies();
+            Cookie[] cookies = request.getCookies();
             // 访问标记
             boolean accessFlag = false;
 
@@ -42,7 +42,7 @@ public class CookieDemo extends HttpServlet {
                         // 获取 cookie 的 value 值，值为之前设置的时间
                         String value = cookie.getValue();
                         value = URLDecoder.decode(value, UTF8);// URL 解码
-                        resp.getWriter().write("<h1>欢迎回来，你上次的访问时间是：" + value + "<h1>");
+                        response.getWriter().write("<h1>欢迎回来，你上次的访问时间是：" + value + "<h1>");
 
                         // 设置 cookie 的 value
                         // 获取当前时间字符串，重新设置 cookie 的值，重新发送 cookie
@@ -54,7 +54,7 @@ public class CookieDemo extends HttpServlet {
 
                         // 设置 cookie 的存活时间(s)
                         cookie.setMaxAge(60 * 60 * 2);// 存活2小时
-                        resp.addCookie(cookie);
+                        response.addCookie(cookie);
                     }
                 }
 
@@ -71,10 +71,10 @@ public class CookieDemo extends HttpServlet {
                 Cookie cookie = new Cookie(ACCESS_TIME, cookieValue);
                 // 设置 cookie 的存活时间(s)
                 cookie.setMaxAge(60 * 60 * 2);// 存活两小时
-                resp.addCookie(cookie);
+                response.addCookie(cookie);
 
                 // 回写页面数据
-                resp.getWriter().write("<h1> 欢迎第一次访问 <h1>");
+                response.getWriter().write("<h1> 欢迎第一次访问 <h1>");
             }
         } catch (IOException e) {
             e.printStackTrace();
